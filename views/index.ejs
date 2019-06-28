@@ -1,0 +1,14 @@
+
+<% if(!currentUser{ %>
+    <a href="/auth/signup" class='links'>Signup</a>|
+<a href="/auth/login" class = 'links'>Login</a>|
+
+<% } else{ %>
+    <a href="/auth/logout" class ='links'>Logout</a>|
+    <a href="/profile" class = 'links'>Profile</a>
+
+<% }) %>
+
+
+
+<h2>Home</h2>
