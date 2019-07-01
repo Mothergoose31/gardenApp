@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
+const axios = require('axios');
 //configure express-session middleware
 const app = express();
 const session = require('express-session');
@@ -11,7 +12,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const db = require('./models');
 
-
+const openFarmApi = 'https://openfarm.cc/api/v1/crops/?filter='
 //THIS IS ONLY USED BY THE SESSION STORE
 
 //This libe makes the session use sequelize to write session data to a postgres table
