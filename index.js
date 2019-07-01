@@ -13,6 +13,8 @@ const helmet = require('helmet');
 const db = require('./models');
 
 const openFarmApi = 'https://openfarm.cc/api/v1/crops/?filter='
+// Delete  or update a vetable 
+const methodOveride = require('method-override');
 //THIS IS ONLY USED BY THE SESSION STORE
 
 //This libe makes the session use sequelize to write session data to a postgres table
@@ -61,6 +63,10 @@ app.get('/', function(req, res) {
 
 app.get('/profile',isLoggedIn, function(req, res) {
   res.render('profile');
+});
+
+app.get('/vegetable.ejs',isLoggedIn,function(req,res){
+  res.render('vegetable');
 });
 
 app.use('/auth', require('./controllers/auth'));

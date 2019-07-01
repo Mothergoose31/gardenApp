@@ -10,14 +10,24 @@ body{
 h2{
     text-align: center;
 }
-.links{
+a{
     text-align: center;
 }
-
-.leaf{
+.veggieInput{
+    position: relative;
+    border-radius: 10px;
+    font-family:'Roboto';
+    width:600px; 
+    margin:30px auto 0; 
+    display:block; 
+    background:transparent;
+    border: 1px solid black;
+    padding: 5px;
     
-    bottom:0px;
-    
-    width: 100vw;
-    position: fixed;
+}
+.bgGarden{
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
