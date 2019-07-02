@@ -17,12 +17,16 @@ a{
     position: relative;
     border-radius: 10px;
     font-family:'Roboto';
-    width:600px; 
+    width:627px;
+    height: 53.7px;
     margin:30px auto 0; 
     display:block; 
-    background:transparent;
-    border: 1px solid black;
-    padding: 5px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    font: 18px/normal 'Roboto',Helvetica,Sans-Serif;
+    
     
 }
 .bgGarden{

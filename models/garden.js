@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   garden.associate = function(models) {
     // associations can be defined here
+    models.garden.belongsTo(models.user);
+    models.garden.belongsToMany(models.vegetable,{through:'gardensvegetables'})
   };
   return garden;
 };

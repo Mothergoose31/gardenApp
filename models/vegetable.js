@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   vegetable.associate = function(models) {
     // associations can be defined here
+    models.vegetable.belongsToMany(models.gardens,{through:'gardensvegetables'})
   };
   return vegetable;
 };
