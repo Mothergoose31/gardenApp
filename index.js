@@ -12,7 +12,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const db = require('./models');
 
-const openFarmApi = 'https://openfarm.cc/api/v1/crops/?filter='
+
 // Delete  or update a vetable 
 const methodOveride = require('method-override');
 //THIS IS ONLY USED BY THE SESSION STORE
@@ -58,6 +58,8 @@ app.use(function(req,res, next){
 
 
 app.get('/', function(req, res) {
+  
+
   res.render('index');
 });
 
@@ -65,8 +67,15 @@ app.get('/profile',isLoggedIn, function(req, res) {
   res.render('profile');
 });
 
-app.get('/vegetable.ejs',isLoggedIn,function(req,res){
-  res.render('vegetable');
+app.get('/vegetable/',isLoggedIn,function(req,res){
+  let vegetable = req.query.veggieInput;
+  let openFarmsUrl = 'https://openfarm.cc/api/v1/crops/?filter=';
+  axios.get(openFarmsUrl+vegetable).then(function(result){
+    console.log (result.data.data[0])
+    res.render('vegetable',{vegetable:result.data.data[0]})
+  })
+
+
 });
 
 app.use('/auth', require('./controllers/auth'));
