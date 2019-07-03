@@ -7,7 +7,6 @@ const app = express();
 const session = require('express-session');
 const passport = require('./config/passportConfig')
 const flash = require('connect-flash');
-app.set('view engine', 'ejs');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const db = require('./models');
@@ -26,6 +25,7 @@ const sessionStore = new sequelizeStore({
 })
 
 app.use(require('morgan')('dev'));
+app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(ejsLayouts);
@@ -55,16 +55,16 @@ app.use(function(req,res, next){
   next();
 })
 
-
-
 app.get('/', function(req, res) {
-  
-
   res.render('index');
 });
 
 app.get('/profile',isLoggedIn, function(req, res) {
-  res.render('profile');
+  db.garden.findAll({
+    where: {userId: req.user.id}
+  }).then( function(gardens) {
+    res.render('profile', {gardens});
+  })
 });
 
 app.get('/vegetable/',isLoggedIn,function(req,res){
@@ -79,6 +79,7 @@ app.get('/vegetable/',isLoggedIn,function(req,res){
 });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/gardens', require('./controllers/gardens'));
 
 var server = app.listen(process.env.PORT || 3000);
 

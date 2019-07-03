@@ -1,0 +1,7 @@
+<form  method = "POST" action="/gardens/<%= id%>/?_method=PUT">
+    <label for="theme">Type</label>
+    <input type="text" name="theme" value = "<%= garden.theme %>" />
+    <label for="location" name='location'>Name</label>
+    <input type="text" name = 'location'value = "<%= garden.location %>">
+    <input type="submit" value='Update your Garden'>
+</form

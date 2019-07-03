@@ -1,4 +1,4 @@
-<h2>My Garden</h2>
+<h2>My Gardens</h2>
 
 <a href="/">Home</a>
 <p>Hello, <%= currentUser.name %></p>
@@ -6,4 +6,9 @@
 
 <%# Get Id of Vegetables in the Garden %>
 
-<%# display name and image of the vegetable %>
+<% gardens.forEach(function (garden) { %>
+    <p>Type of Garden: <%= garden.theme %> </p>
+    <p>Location: <%= garden.location %> </p>
+    
+<% }) %>
+
