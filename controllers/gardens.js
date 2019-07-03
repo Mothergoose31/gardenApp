@@ -28,23 +28,39 @@ router.post('/',function(req,res){
     })
 })
 
+// Add a vegetable to a garden
+router.post("/:gid/vegetables", function(req, res) {
+    console.log("hit the route...");
+    db.garden.findByPk(req.params.gid).then(function(garden) {
+        db.vegetable.create({
+            name: req.body.vid
+        }).then(function(veg) {
+            garden.addVegetable(veg).then(function(data) {
+                res.redirect('/gardens/' + garden.id);
+            })
+        })
+    })
+})
 
 
-
-
-
-
-
-
+//get a specific garden
+router.get('/:id', function(req,res){
+    db.garden.findOne({
+        where: {id: req.params.id},
+        include: [db.vegetable]
+    }).then(function(garden){
+        res.render('gardens/show',{garden:garden});
+    });
+})
 
 //Delete a garden
 
-app.delete('/gardens/:id',function(req,res){
-    //Read the data from the file 
-    // let gardens = fs.readFileSync('./gardens.json');
-    //parse the data into a object
-    // let gardenData = JSON.parse(gardens);
+router.delete('/gardens/:id',function(req,res){
+
     let id = parseInt(req.params.id);
     gardenData.splice(id,1);
-module.exports = router;
 });
+
+module.exports = router;
+
+//Delete a Vegetable

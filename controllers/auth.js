@@ -19,7 +19,7 @@ router.post('/signup',function(req,res){
     if (created){
       console.log('user was created ,not found');
       passport.authenticate('local',{
-        successRedirect:'/',
+        successRedirect:'/profile',
         successFlash:'Account created and logged in!'
       })(req,res);
       //IIFE imediately invoked funtion expression
@@ -52,7 +52,7 @@ router.get('/logout', function(req, res) {
   req.logout();
   console.log('logged out');
   req.flash('success', "you have logged out ?");
-  res.redirect('/');
+  res.redirect('/profile');
 });
 
 

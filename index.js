@@ -72,7 +72,7 @@ app.get('/vegetable/',isLoggedIn,function(req,res){
   let openFarmsUrl = 'https://openfarm.cc/api/v1/crops/?filter=';
   axios.get(openFarmsUrl+vegetable).then(function(result){
     console.log (result.data.data[0])
-    res.render('vegetable',{vegetable:result.data.data[0]})
+    res.render('vegetable',{vegetable:result.data.data, gardenId: req.query.gardenId})
   })
 
 

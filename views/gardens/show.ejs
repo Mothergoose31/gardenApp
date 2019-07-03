@@ -1,0 +1,23 @@
+
+
+
+    
+    <div class='seachboxForm'>
+        <form action="/vegetable" method="GET">
+            <input type="hidden" name="gardenId" value="<%= garden.id %>">
+            <input type="text" placeholder='Vegtable Search' class='seachbox' name='veggieInput' >
+            <input type="submit" value='' class='seachboxSubmit'>
+        </form>
+    </div>
+
+    
+    <h1>My <%= garden.theme %> Garden</h1> 
+    <p>Location: <%= garden.location %> </p>
+    <hr/>
+
+<% garden.vegetables.forEach(function(veg) { %>
+    <p><%= veg.name %></p>
+<% }); %>
+    
+
+    

@@ -1,16 +1,22 @@
-<h1><%= vegetable.attributes.name %></h1>
-<img src="<%= vegetable.attributes. main_image_path %>" alt="">
-<ul>
-<li> binomial name: <%= vegetable.attributes.binomial_name %> </li>
-<li> descripttion: <%= vegetable.description %> </li>
-<li> sun requirements: <%= vegetable.attributes. sun_requirements %> </li>
-<li> row spacing: <%= vegetable.attributes. row_spacing %> </li>
-<li> height: <%= vegetable.attributes. height  %> </li>
-</ul>
-
-<div class = 'addToGarden'>
-        <form action="/profile" method= "POST">
-            <input type="submit" value= 'add to garden' name="addToGarden" class = 'addToGarden' >
+<% vegetable.forEach(function(vegetable) { %>
+    <div class="well">
+        <h1><%= vegetable.attributes.name %></h1>
+        <img src="<%= vegetable.attributes.main_image_path %>" alt="">
+        <ul>
+            <li> binomial name: <%= vegetable.attributes.binomial_name %> </li>
+            <li> description: <%= vegetable.description %> </li>
+            <li> sun requirements: <%= vegetable.attributes.sun_requirements %> </li>
+            <li> row spacing: <%= vegetable.attributes.row_spacing %> </li>
+            <li> height: <%= vegetable.attributes.height  %> </li>
+        </ul>
+        <div class='addToGarden'>
+        <form action="/gardens/<%= gardenId %>/vegetables" method="POST">
+            <input type="hidden" name="vid" value="<%= vegetable.id %>">
+            <input type="submit" value='add to garden' name="addToGarden" class='addToGarden' >
         </form>
 </div>
+    </div>
+    <% }); %>
+
+
 

@@ -13,21 +13,55 @@ h2{
 a{
     text-align: center;
 }
-.veggieInput{
+.seachboxForm{
+    text-align: center;
+    display:inline-block;
+    
+    background-color:transparent;
+    width:627px;
+    height: 53.7px;
+    border: 1px #ccc solid;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    font: 18px/normal 'Roboto',Helvetica,Sans-Serif;
+    border: 1px #ccc solid;
+}
+
+.seachbox{
+    
+    width: 557px;
+    height: 40px;
+    font-size: 16px;
     position: relative;
     border-radius: 10px;
     font-family:'Roboto';
-    width:627px;
-    height: 53.7px;
-    margin:30px auto 0; 
-    display:block; 
+    display: block; 
     background-color: #fff;
     border: 1px #ccc solid;
     padding: 0;
     box-shadow: 0 2px 4px rgba(0,0,0,.3);
     font: 18px/normal 'Roboto',Helvetica,Sans-Serif;
+    margin-top: 10px;
+    margin-left: 12px;
+}
     
-    
+
+.seachboxSubmit{
+    height: 51px;
+    width: 51px;
+    background: transparent url('../img/submitIcon.png') no-repeat;
+    background-size: contain;
+    border-width: 11px;
+    overflow: hidden;
+    vertical-align: top;
+    border: 8px solid transparent;
+    position: static;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    color:transparent;
+
+
 }
 .bgGarden{
     position: absolute;
