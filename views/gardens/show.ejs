@@ -1,7 +1,7 @@
 
 
 
-    
+<img src="" alt="">
     <div class='seachboxForm'>
         <form action="/vegetable" method="GET">
             <input type="hidden" name="gardenId" value="<%= garden.id %>">
@@ -11,13 +11,26 @@
     </div>
 
     
-    <h1>My <%= garden.theme %> Garden</h1> 
-    <p>Location: <%= garden.location %> </p>
+    <h1 class = 'title'>My <%= garden.theme %> Garden</h1> 
+    <p class = 'location'>Location: <%= garden.location %> </p>
     <hr/>
 
 <% garden.vegetables.forEach(function(veg) { %>
-    <p><%= veg.name %></p>
+
+<div class = 'container'>   
+    <div class = 'vegetables'>
+        <p>
+            <a href="https://openfarm.cc/api/v1/crops/<%= veg.apiid %> "><%= veg.name %>
+            </a>
+        </p>
+        <form action="/gardens/<%= garden.id %>/vegetables/<%= veg.id %>?_method=DELETE" method = 'POST'>
+        <input type="submit" value ="DELETE" name="" id="">
+    </div>
+</div>    
+
 <% }); %>
+
+    <a href="/profile">&larr; Back Home</a>
     
 
     

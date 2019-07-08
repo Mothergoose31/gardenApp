@@ -33,7 +33,8 @@ router.post("/:gid/vegetables", function(req, res) {
     console.log("hit the route...");
     db.garden.findByPk(req.params.gid).then(function(garden) {
         db.vegetable.create({
-            name: req.body.vid
+            name: req.body.vname,
+            apiid: req.body.vid
         }).then(function(veg) {
             garden.addVegetable(veg).then(function(data) {
                 res.redirect('/gardens/' + garden.id);
@@ -41,6 +42,8 @@ router.post("/:gid/vegetables", function(req, res) {
         })
     })
 })
+
+
 
 
 //get a specific garden
@@ -54,13 +57,44 @@ router.get('/:id', function(req,res){
 })
 
 //Delete a garden
+router.delete("/:gid/vegetables/delete", function(req, res) {
+    
+    db.garden.delete(req.params.gid).then(function(garden) {
+        db.vegetable.delete({
+            name: req.body.vname,
+            apiid: req.body.vid
+        })
+            
+                
+            })
+        })
+    
 
-router.delete('/gardens/:id',function(req,res){
 
-    let id = parseInt(req.params.id);
-    gardenData.splice(id,1);
-});
+// router.delete('/:id/delete',function(req,res){
+// db.garden.destroy({
+//     where:{id:req.params.id,
+//             theme:req.params.theme,
+//             location:req.params.location 
+//         }
+    
+//     })
+    
+    // });
+// Delete  a specific vegetable from a specific garden
+router.delete('/:gid/vegetables/:vid',function(req,res){
+    db.gardensVegetables.destroy({
+        where: {gardenId:parseInt(req.params.gid),
+                vegetableId: parseInt(req.params.vid) 
+            }
+    }).then(function(){
+        res.redirect("/gardens/" + req.params.gid )
+    })
+            
+        
+    })
+    
+    
 
 module.exports = router;
 
-//Delete a Vegetable

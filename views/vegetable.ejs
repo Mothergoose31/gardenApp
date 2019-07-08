@@ -12,6 +12,8 @@
         <div class='addToGarden'>
         <form action="/gardens/<%= gardenId %>/vegetables" method="POST">
             <input type="hidden" name="vid" value="<%= vegetable.id %>">
+            <p> <%= vegetable.id %> </p>
+            <input type="hidden" name ='vname' value ='<%= vegetable.attributes.name %>'>
             <input type="submit" value='add to garden' name="addToGarden" class='addToGarden' >
         </form>
 </div>

@@ -30,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(ejsLayouts);
 app.use(helmet());
+app.use(methodOveride('_method'));
 //Configures  express-session middleware 
 app.use(session({
   secret:process.env.SESSION_SECRET,

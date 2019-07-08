@@ -6,12 +6,25 @@ html,body {
 body{
     width: 100vw;
     height: 100vh;
+    background-color: lightgreen;
 }
 h2{
     text-align: center;
 }
 a{
     text-align: center;
+}
+.title{
+    text-align: center;
+}
+.location{
+    text-align: center;
+}
+.vegetables{
+    text-align: center;
+    background-color: green;
+    font: 18px/normal 'Roboto',Helvetica,Sans-Serif;
+
 }
 .seachboxForm{
     text-align: center;
@@ -62,6 +75,9 @@ a{
     color:transparent;
 
 
+}
+.newgarden{
+    text-align: center;
 }
 .bgGarden{
     position: absolute;
