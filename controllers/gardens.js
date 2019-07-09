@@ -27,6 +27,19 @@ router.post('/',function(req,res){
         res.redirect('/profile')
     })
 })
+// update a garden
+router.put('/:gid',function(req,res){
+        db.garden.update({
+            theme: req.body.theme,
+            location: req.body.location
+    
+        },{where: {id:req.params.gid}}).then(function(){
+            res.redirect('/profile')
+        })
+    }) 
+
+
+
 
 // Add a vegetable to a garden
 router.post("/:gid/vegetables", function(req, res) {
@@ -34,7 +47,8 @@ router.post("/:gid/vegetables", function(req, res) {
     db.garden.findByPk(req.params.gid).then(function(garden) {
         db.vegetable.create({
             name: req.body.vname,
-            apiid: req.body.vid
+            apiid: req.body.vid,
+            svgIcon: req.body.svgIcon
         }).then(function(veg) {
             garden.addVegetable(veg).then(function(data) {
                 res.redirect('/gardens/' + garden.id);
@@ -85,7 +99,7 @@ router.delete("/:gid/vegetables/delete", function(req, res) {
 router.delete('/:gid/vegetables/:vid',function(req,res){
     db.gardensVegetables.destroy({
         where: {gardenId:parseInt(req.params.gid),
-                vegetableId: parseInt(req.params.vid) 
+                vegetableId:parseInt(req.params.vid) 
             }
     }).then(function(){
         res.redirect("/gardens/" + req.params.gid )

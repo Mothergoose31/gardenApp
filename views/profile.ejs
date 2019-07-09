@@ -1,20 +1,27 @@
 <h2>My Gardens</h2>
+<a href= "/gardens/new" class = "links">New Garden</a>
 
-<a href="/">Home</a>
+<a href="/" class = "links">Home</a>
 
 
 
 <%# Get Id of Vegetables in the Garden %>
-<img src="./img/vegetablePatch.jpeg" alt="">
+
+
 <% gardens.forEach(function (garden) { %>
-    <div class = 'vegetables'>
+<div class = 'container1'>
+   <div class = 'vegetables'>
         <a href="gardens/<%= garden.id %>">Enter the Garden</a>
         <p>Type of Garden: <%= garden.theme %> </p>
         <p>Location: <%= garden.location %> </p>
 
-        <form action="/gardens/<%= garden.id %>/?_method=DELETE" method = 'POST'>
-            <input type="submit" value="DELETE" name="" id="">
+        <form action="/gardens/<%= garden.id %>/?_method=PUT" method="POST">
+            <label for="name" name='name'>Type of Garden:</label>
+            <input type= "text" name='theme' >
+            <label for="location" name='location'>Location:</label>
+            <input type='text' name = 'location' >
+            <input type="submit" value='Update' name="update" class='update' >
         </form>
     </div>
 <% }) %>
-
+</div>
